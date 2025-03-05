@@ -1,0 +1,15 @@
+﻿@model FREYA_WEB.Models.Postcard
+
+<h2>Видалити листівку</h2>
+
+<p>Ви впевнені, що хочете видалити цю листівку?</p>
+
+<div>
+    <strong>@Model.Name</strong> - @Model.Color
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="PostcardId" />
+    <button type="submit" class="btn btn-success">Видалити</button>
+    <a asp-action="Index" class="btn btn-success">Назад</a>
+</form>
