@@ -1,0 +1,38 @@
+﻿@model IEnumerable<FlowerWEB.Models.Flower>
+
+@{
+    ViewData["Title"] = "Список квітів";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+<a href="@Url.Action("Create", "Flowers")" class="btn btn-success">Додати нову квітку</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Тип</th>
+            <th>Ціна</th>
+            <th>Фото</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var flower in Model)
+        {
+            <tr>
+                <td>@flower.Name</td>
+                <td>@flower.Type</td>
+                <td>@flower.Price</td>
+                <td><img src="@flower.PhotoUrl" alt="@flower.Name" style="max-width: 100px;" /></td>
+                <td>
+                    <a href="@Url.Action("Edit", "Flowers", new { id = flower.FlowerId })" class="btn btn-success">Редагувати</a>
+                    <a href="@Url.Action("Delete", "Flowers", new { id = flower.FlowerId })" class="btn btn-success">Видалити</a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
