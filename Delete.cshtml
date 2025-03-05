@@ -1,0 +1,15 @@
+﻿@model FlowerWEB.Models.FlowersForOrder
+
+<h2>Видалити квітку з замовлення</h2>
+
+<p>Ви впевнені, що хочете видалити цю квітку з замовлення?</p>
+
+<div>
+    <strong>Кількість: @Model.Count</strong>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="FlowOId" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</form>

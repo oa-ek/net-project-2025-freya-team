@@ -1,0 +1,30 @@
+﻿@model FlowerWEB.Models.FlowersForOrder
+
+<h2>Редагувати квітку в замовленні</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="FlowOId" />
+
+    <div class="form-group">
+        <label asp-for="OrderId"></label>
+        <input asp-for="OrderId" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="FlowerId">Квітка</label>
+        <select asp-for="FlowerId" class="form-control">
+            @foreach (var flower in ViewBag.Flowers as SelectList)
+            {
+                <option value="@flower.Value">@flower.Text</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Count"></label>
+        <input asp-for="Count" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Зберегти</button>
+    <a asp-action="Index" class="btn btn-success">Назад</a>
+</form>

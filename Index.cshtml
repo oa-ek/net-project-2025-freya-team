@@ -1,0 +1,29 @@
+﻿@model IEnumerable<FlowerWEB.Models.FlowersForOrder>
+
+<h2>Список квітів в замовленнях</h2>
+<a asp-action="Create" class="btn btn-success">Додати квітку до замовлення</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Замовлення</th>
+            <th>Квітка</th>
+            <th>Кількість</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.Flower.Name</td>
+                <td>@item.Count</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FlowOId" class="btn btn-success">Редагувати</a>
+                    <a asp-action="Delete" asp-route-id="@item.FlowOId" class="btn btn-success">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
