@@ -1,0 +1,15 @@
+﻿@model FlowerWEB.Models.Order
+
+@{
+    ViewData["Title"] = "Видалити замовлення";
+    Layout = "_Layout";
+}
+
+<h2>Видалити замовлення?</h2>
+<p>Ви впевнені, що хочете видалити замовлення з ID @Model.OrderId?</p>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="OrderId" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</form>

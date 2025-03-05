@@ -1,0 +1,41 @@
+﻿@model IEnumerable<FlowerWEB.Models.Order>
+
+@{
+    ViewData["Title"] = "Замовлення";
+    Layout = "_Layout";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Створити нове замовлення</a>
+</p>
+
+<table class="table table-bordered ml-3 mb-3">
+    <thead>
+        <tr>
+            <th>Користувач</th>
+            <th>Статус</th>
+            <th>Дата замовлення</th>
+            <th>Загальна сума</th>
+            <th>Доставка</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.User.Name</td>
+                <td>@order.Status</td>
+                <td>@order.OrderDate</td>
+                <td>@order.TotalAmount</td>
+                <td>@order.Delivery.Region</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Order", new { id = order.OrderId })" class="btn btn-success">Редагувати</a>
+                    <a href="@Url.Action("Delete", "Order", new { id = order.OrderId })" class="btn btn-success">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

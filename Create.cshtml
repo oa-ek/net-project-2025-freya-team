@@ -1,0 +1,66 @@
+﻿@model FlowerWEB.Models.Order
+
+@{
+    ViewData["Title"] = "Створити замовлення";
+    Layout = "_Layout";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h4>Замовлення</h4>
+<hr />
+
+<div class="row ml-3 mb-3">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label for="user">Оберіть користувача:</label>
+                <select class="form-control" id="user" name="UserId">
+                    @foreach (var user in ViewBag.Users)
+                    {
+                        <option value="@user.UserId">@user.Name</option>  <!-- Передаємо UserId -->
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Оберіть статус замовлення:</label>
+                <select class="form-control" id="status" name="Status">
+                    @foreach (var status in ViewBag.OrderStatuses)
+                    {
+                        <option value="@status">@status</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="orderDate">Дата замовлення:</label>
+                <input type="datetime-local" class="form-control" id="orderDate" name="OrderDate" value="@Model.OrderDate.ToString("yyyy-MM-ddTHH:mm")" />
+            </div>
+
+            <div class="form-group">
+                <label for="totalAmount">Загальна сума:</label>
+                <input type="number" step="0.01" class="form-control" id="totalAmount" name="TotalAmount" value="@Model.TotalAmount" />
+            </div>
+
+            <div class="form-group">
+                <label for="delivery">Оберіть доставку:</label>
+                <select class="form-control" id="delivery" name="DeliveryId">
+                    @foreach (var delivery in ViewBag.Deliveries)
+                    {
+                        <option value="@delivery.DeliveryId">@delivery.Region</option>  <!-- Передаємо DeliveryId -->
+                    }
+                </select>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Створити" class="btn btn-outline-success btn-fw" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-inverse-info btn-fw">Повернутись до списку</a>
+</div>
