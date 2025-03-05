@@ -1,0 +1,10 @@
+﻿@model FREYA_WEB.Models.Bouquet
+
+<h2>Видалити букет?</h2>
+<p>Ви впевнені, що хочете видалити @Model.Name?</p>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="BouquetId" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</form>

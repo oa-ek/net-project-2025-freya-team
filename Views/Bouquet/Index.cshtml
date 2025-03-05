@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FREYA_WEB.Models.Bouquet>
+
+<h2>Список букетів</h2>
+
+<a asp-action="Create" class="btn btn-primary">Додати букет</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Ціна</th>
+            <th>Висота</th>
+            <th>Обгортка</th>
+            <th>Листівка</th>
+            <th>Фото</th>
+            <th>Дії</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var bouquet in Model)
+        {
+            <tr>
+                <td>@bouquet.Name</td>
+                <td>@bouquet.Price</td>
+                <td>@bouquet.Height</td>
+                <td>@bouquet.Wrapper?.Name</td>
+                <td>@bouquet.Postcard?.Name</td>
+                <td><img src="@bouquet.PhotoUrl" width="50" /></td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@bouquet.BouquetId" class="btn btn-warning">Редагувати</a>
+                    <a asp-action="Delete" asp-route-id="@bouquet.BouquetId" class="btn btn-warning">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,36 @@
+﻿@model FREYA_WEB.Models.Bouquet
+
+<h2>Додати букет</h2>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Назва</label>
+        <input asp-for="Name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Ціна</label>
+        <input asp-for="Price" class="form-control" type="number" step="0.01" required />
+    </div>
+    <div class="form-group">
+        <label>Висота</label>
+        <input asp-for="Height" class="form-control" type="number" required />
+    </div>
+    <div class="form-group">
+        <label>Обгортка</label>
+        <select asp-for="WrapperId" asp-items="ViewBag.Wrappers" class="form-control">
+            <option value="">Без обгортки</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Листівка</label>
+        <select asp-for="PostcardId" asp-items="ViewBag.Postcards" class="form-control">
+            <option value="">Без листівки</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Фото (URL)</label>
+        <input asp-for="PhotoUrl" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Додати</button>
+</form>
