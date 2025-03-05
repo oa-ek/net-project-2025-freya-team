@@ -1,0 +1,22 @@
+﻿@model FlowerWEB.Models.Flower
+
+@{
+    ViewData["Title"] = "Видалити квітку";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>Ви впевнені, що хочете видалити цю квітку?</h4>
+    <div>
+        <strong>@Model.Name</strong> - @Model.Type
+    </div>
+    <p>Ціна: @Model.Price</p>
+    <p>Фото: <img src="@Model.PhotoUrl" alt="@Model.Name" style="max-width:200px;" /></p>
+</div>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="FlowerId" />
+    <button type="submit" class="btn btn-danger">Видалити</button>
+    <a asp-action="Index" class="btn btn-secondary">Назад</a>
+</form>
