@@ -1,0 +1,10 @@
+﻿@model FREYA_WEB.Models.Wrapper
+
+<h2>Видалити обгортку?</h2>
+<p>Ви впевнені, що хочете видалити @Model.Name?</p>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="WrapperId" />
+    <button type="submit" class="btn btn-success">Видалити</button>
+    <a asp-action="Index" class="btn btn-success">Назад</a>
+</form>
